@@ -1,139 +1,601 @@
-Privacy Policy
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – PINs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-This privacy policy applies to the pins app (hereby referred to as "Application") 
-for mobile devices that was created by Batuhan Gul (hereby referred to as 
-"Service Provider") as a Freemium service. This service is intended for use 
-"AS IS".
+    :root {
+      --bg: #0D0D0D;
+      --bg2: #141414;
+      --bg3: #1A1A1A;
+      --border: #2A2A2A;
+      --accent: #E8C547;
+      --text: #F0F0F0;
+      --muted: #888;
+      --body: #B0B0B0;
+    }
 
-Information Collection and Use
+    html { scroll-behavior: smooth; }
 
-The Application collects information when you download and use it. This 
-information may include:
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 15px;
+    }
 
-    Your device's Internet Protocol address (e.g. IP address)
-    The pages of the Application that you visit, the time and date of your 
-    visit, the time spent on those pages
-    The time spent on the Application
-    The operating system you use on your mobile device
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-The Application collects your device's location, which helps the Service 
-Provider determine your approximate geographical location and make use of 
-in the following ways:
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
 
-    Geolocation Services: The Service Provider utilizes location data to 
-    provide features such as personalized content, relevant recommendations, 
-    and location-based services.
-    Analytics and Improvements: Aggregated and anonymized location data helps 
-    the Service Provider to analyze user behavior, identify trends, and improve 
-    the overall performance and functionality of the Application.
-    Third-Party Services: Periodically, the Service Provider may transmit 
-    anonymized location data to external services. These services assist them 
-    in enhancing the Application and optimizing their offerings.
+    .lang-toggle {
+      display: flex;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
 
-The Application uses Artificial Intelligence (AI) technologies to enhance user 
-experience and provide certain features. When you submit a TikTok or Instagram 
-URL, that URL is sent to a third-party retrieval service (Apify) to fetch the 
-video content, and the retrieved content is then analyzed by an AI service 
-(OpenAI) to identify location and place information. No user account data is 
-shared with these services. All AI processing is performed in accordance with 
-this privacy policy and applicable laws. If you have questions about the AI 
-features or data processing, please contact the Service Provider.
+    .lang-btn {
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: all 0.15s;
+      letter-spacing: 0.05em;
+    }
 
-The Service Provider may use the information you provided to contact you from 
-time to time to provide you with important information, required notices and 
-marketing promotions.
+    .lang-btn.active { background: var(--accent); color: #0D0D0D; }
 
-For a better experience, while using the Application, the Service Provider may 
-require you to provide us with certain personally identifiable information, 
-including but not limited to email address, device location, and social media 
-URLs (TikTok, Instagram) submitted by you for analysis. The information that 
-the Service Provider requests will be retained by them and used as described 
-in this privacy policy.
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 100px;
+    }
 
-Third Party Access
+    .hero {
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
 
-The Application works with the following third-party service providers that may 
-receive or process your data. Each provider has their own Privacy Policy:
+    .tag {
+      display: inline-block;
+      background: rgba(232,197,71,0.12);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(232,197,71,0.25);
+      margin-bottom: 16px;
+    }
 
-    Google Play Services: https://policies.google.com/privacy
-    RevenueCat (subscription & payment processing): 
-        https://www.revenuecat.com/privacy
-    Supabase (database & user authentication): https://supabase.com/privacy
-    OpenAI (AI-powered content analysis): https://openai.com/privacy
-    Apify (social media content retrieval): 
-        https://apify.com/privacy-policy
-    Google Places API (location and place data): 
-        https://policies.google.com/privacy
+    h1 { font-size: 36px; font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 12px; }
 
-When you submit a TikTok or Instagram URL, that URL is forwarded to Apify to 
-retrieve the associated video content, which is then processed by OpenAI to 
-identify location information. No user account credentials or personal profile 
-data are shared with Apify or OpenAI.
+    .meta { color: var(--muted); font-size: 13px; display: flex; gap: 20px; flex-wrap: wrap; }
 
-The Service Provider may disclose User Provided and Automatically Collected 
-Information:
+    .page-nav { display: flex; gap: 8px; margin-bottom: 48px; }
+    .page-nav a {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: all 0.15s;
+    }
+    .page-nav a:hover { color: var(--text); border-color: #444; }
+    .page-nav a.active { background: var(--accent); color: #0D0D0D; border-color: var(--accent); }
 
-    as required by law, such as to comply with a subpoena, or similar legal 
-    process;
-    when they believe in good faith that disclosure is necessary to protect 
-    their rights, protect your safety or the safety of others, investigate 
-    fraud, or respond to a government request;
-    with their trusted service providers who work on their behalf, do not have 
-    an independent use of the information we disclose to them, and have agreed 
-    to adhere to the rules set forth in this privacy statement.
+    .toc {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+    .toc-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .toc ol { padding-left: 20px; color: var(--body); font-size: 13px; display: grid; gap: 6px; }
+    .toc a { color: var(--body); text-decoration: none; }
+    .toc a:hover { color: var(--accent); }
 
-Opt-Out Rights
+    .section { margin-bottom: 40px; }
 
-You can stop all collection of information by the Application easily by 
-uninstalling it. You may use the standard uninstall processes as may be 
-available as part of your mobile device or via the mobile application 
-marketplace or network.
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-Data Retention Policy
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: rgba(232,197,71,0.1);
+      border: 1px solid rgba(232,197,71,0.25);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
 
-The Service Provider will retain User Provided data for as long as you use the 
-Application and for a reasonable time thereafter. If you'd like them to delete 
-User Provided Data that you have provided via the Application, please contact 
-them at pinsappcontact@gmail.com and they will respond in a reasonable time.
+    p { color: var(--body); margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
 
-Children
+    ul, ol { color: var(--body); padding-left: 20px; margin-bottom: 14px; display: grid; gap: 6px; }
+    li { line-height: 1.6; }
 
-The Service Provider does not use the Application to knowingly solicit data 
-from or market to children under the age of 13.
+    .provider-list { display: grid; gap: 8px; margin-bottom: 16px; }
+    .provider-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+    .provider-name { font-weight: 600; color: var(--text); font-size: 14px; }
+    .provider-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .provider-link { font-size: 12px; color: var(--accent); text-decoration: none; font-weight: 600; flex-shrink: 0; margin-left: 12px; }
+    .provider-link:hover { text-decoration: underline; }
 
-The Application does not address anyone under the age of 13. The Service 
-Provider does not knowingly collect personally identifiable information from 
-children under 13 years of age. In the case the Service Provider discovers 
-that a child under 13 has provided personal information, the Service Provider 
-will immediately delete this from their servers. If you are a parent or 
-guardian and you are aware that your child has provided us with personal 
-information, please contact the Service Provider (pinsappcontact@gmail.com) 
-so that they will be able to take the necessary actions.
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+    .data-table th {
+      background: var(--bg3);
+      color: var(--muted);
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-table td {
+      padding: 10px 14px;
+      color: var(--body);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
 
-Security
+    .callout {
+      background: rgba(232,197,71,0.06);
+      border: 1px solid rgba(232,197,71,0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      color: var(--body);
+      font-size: 14px;
+    }
 
-The Service Provider is concerned about safeguarding the confidentiality of 
-your information. The Service Provider provides physical, electronic, and 
-procedural safeguards to protect information the Service Provider processes 
-and maintains.
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
 
-Changes
+    .contact-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+    .contact-card p { margin-bottom: 12px; }
+    .contact-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0D0D0D;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .contact-btn:hover { opacity: 0.9; }
 
-This Privacy Policy may be updated from time to time for any reason. The 
-Service Provider will notify you of any changes to the Privacy Policy by 
-updating this page with the new Privacy Policy. You are advised to consult 
-this Privacy Policy regularly for any changes, as continued use is deemed 
-approval of all changes.
+    footer { text-align: center; color: var(--muted); font-size: 12px; padding-top: 48px; }
 
-This privacy policy is effective as of 2026-03-15
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-Your Consent
+    [data-lang] { display: none; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-tr [data-lang="tr"] { display: block; }
+    .lang-en [data-lang-inline="en"] { display: inline; }
+    .lang-tr [data-lang-inline="tr"] { display: inline; }
+    [data-lang-inline] { display: none; }
 
-By using the Application, you are consenting to the processing of your 
-information as set forth in this Privacy Policy now and as amended by us.
+    @media (max-width: 600px) {
+      h1 { font-size: 26px; }
+      .data-table { font-size: 12px; }
+      .data-table th, .data-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body class="lang-en">
 
-Contact Us
+  <header>
+    <a class="logo" href="#">📍 PINs</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('tr')">TR</button>
+    </div>
+  </header>
 
-If you have any questions regarding privacy while using the Application, or 
-have questions about the practices, please contact the Service Provider via 
-email at pinsappcontact@gmail.com.
+  <div class="container">
+
+    <div class="hero">
+      <div class="tag">Legal</div>
+      <h1>
+        <span data-lang="en">Privacy Policy</span>
+        <span data-lang="tr">Gizlilik Politikası</span>
+      </h1>
+      <div class="meta">
+        <span>
+          <span data-lang-inline="en">Effective as of</span>
+          <span data-lang-inline="tr">Yürürlük tarihi:</span>
+          2026-03-15
+        </span>
+        <span>App: PINs</span>
+      </div>
+    </div>
+
+    <nav class="page-nav">
+      <a href="privacy.html" class="active">
+        <span data-lang-inline="en">Privacy Policy</span>
+        <span data-lang-inline="tr">Gizlilik Politikası</span>
+      </a>
+      <a href="terms.html">
+        <span data-lang-inline="en">Terms &amp; Conditions</span>
+        <span data-lang-inline="tr">Kullanım Koşulları</span>
+      </a>
+    </nav>
+
+    <div class="toc">
+      <div class="toc-title">
+        <span data-lang-inline="en">Contents</span>
+        <span data-lang-inline="tr">İçindekiler</span>
+      </div>
+      <ol>
+        <li data-lang="en"><a href="#collection">Information We Collect</a></li>
+        <li data-lang="en"><a href="#ai">AI Processing</a></li>
+        <li data-lang="en"><a href="#third-party">Third-Party Services</a></li>
+        <li data-lang="en"><a href="#disclosure">Data Disclosure</a></li>
+        <li data-lang="en"><a href="#retention">Data Retention</a></li>
+        <li data-lang="en"><a href="#optout">Opt-Out</a></li>
+        <li data-lang="en"><a href="#children">Children</a></li>
+        <li data-lang="en"><a href="#security">Security</a></li>
+        <li data-lang="en"><a href="#changes">Changes</a></li>
+        <li data-lang="en"><a href="#contact">Contact</a></li>
+
+        <li data-lang="tr"><a href="#collection">Topladığımız Bilgiler</a></li>
+        <li data-lang="tr"><a href="#ai">Yapay Zeka İşleme</a></li>
+        <li data-lang="tr"><a href="#third-party">Üçüncü Taraf Hizmetler</a></li>
+        <li data-lang="tr"><a href="#disclosure">Veri Açıklaması</a></li>
+        <li data-lang="tr"><a href="#retention">Veri Saklama</a></li>
+        <li data-lang="tr"><a href="#optout">Vazgeçme Hakkı</a></li>
+        <li data-lang="tr"><a href="#children">Çocuklar</a></li>
+        <li data-lang="tr"><a href="#security">Güvenlik</a></li>
+        <li data-lang="tr"><a href="#changes">Değişiklikler</a></li>
+        <li data-lang="tr"><a href="#contact">İletişim</a></li>
+      </ol>
+    </div>
+
+    <!-- Intro -->
+    <div class="section">
+      <div data-lang="en">
+        <p>This privacy policy applies to the <strong>PINs</strong> app ("Application") created by Batuhan Gul ("Service Provider") as a Freemium service. By using the Application, you agree to the practices described in this policy.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Bu gizlilik politikası, Batuhan Gul ("Servis Sağlayıcı") tarafından Freemium hizmet olarak sunulan <strong>PINs</strong> uygulamasına ("Uygulama") uygulanır. Uygulamayı kullanarak bu politikada açıklanan uygulamaları kabul etmiş sayılırsınız.</p>
+      </div>
+    </div>
+
+    <!-- 1. Collection -->
+    <div class="section" id="collection">
+      <h2><span class="section-num">1</span>
+        <span data-lang-inline="en">Information We Collect</span>
+        <span data-lang-inline="tr">Topladığımız Bilgiler</span>
+      </h2>
+
+      <div data-lang="en">
+        <p>When you use the Application, we may collect the following types of information:</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Category</th><th>Data</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Account</td><td>Email address</td><td>Authentication &amp; communication</td></tr>
+            <tr><td>Content</td><td>TikTok / Instagram URLs you submit</td><td>AI-powered place detection</td></tr>
+            <tr><td>Location</td><td>Approximate location (optional)</td><td>Map features &amp; nearby suggestions</td></tr>
+            <tr><td>Usage</td><td>Pages visited, time spent, OS info</td><td>App improvement &amp; analytics</td></tr>
+            <tr><td>Device</td><td>IP address</td><td>Security &amp; fraud prevention</td></tr>
+          </tbody>
+        </table>
+        <p>We do not sell your personal data to third parties.</p>
+      </div>
+
+      <div data-lang="tr">
+        <p>Uygulamayı kullandığınızda aşağıdaki bilgileri toplayabiliriz:</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Kategori</th><th>Veri</th><th>Amaç</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Hesap</td><td>E-posta adresi</td><td>Kimlik doğrulama ve iletişim</td></tr>
+            <tr><td>İçerik</td><td>Gönderdiğiniz TikTok / Instagram URL'leri</td><td>Yapay zeka ile mekan tespiti</td></tr>
+            <tr><td>Konum</td><td>Yaklaşık konum (isteğe bağlı)</td><td>Harita özellikleri ve yakın mekan önerileri</td></tr>
+            <tr><td>Kullanım</td><td>Ziyaret edilen sayfalar, geçirilen süre, işletim sistemi</td><td>Uygulama iyileştirme ve analitik</td></tr>
+            <tr><td>Cihaz</td><td>IP adresi</td><td>Güvenlik ve dolandırıcılık önleme</td></tr>
+          </tbody>
+        </table>
+        <p>Kişisel verilerinizi üçüncü taraflara satmıyoruz.</p>
+      </div>
+    </div>
+
+    <!-- 2. AI -->
+    <div class="section" id="ai">
+      <h2><span class="section-num">2</span>
+        <span data-lang-inline="en">AI Processing</span>
+        <span data-lang-inline="tr">Yapay Zeka İşleme</span>
+      </h2>
+      <div data-lang="en">
+        <p>When you submit a TikTok or Instagram URL, the following process occurs:</p>
+        <ol>
+          <li>The URL is sent to <strong>Apify</strong> to retrieve publicly available video/post metadata.</li>
+          <li>The retrieved content is sent to <strong>OpenAI</strong> to detect place names, addresses, and categories.</li>
+          <li>Optionally, detected place names are verified via the <strong>Google Places API</strong>.</li>
+        </ol>
+        <p>No user account data, credentials, or personal profile information is shared with Apify or OpenAI. Only the URL and publicly available post metadata are processed.</p>
+        <div class="callout">
+          AI-generated results (place names, addresses, categories) are for informational purposes and may not always be accurate. Please verify before relying on them.
+        </div>
+      </div>
+      <div data-lang="tr">
+        <p>Bir TikTok veya Instagram URL'si gönderdiğinizde şu süreç işler:</p>
+        <ol>
+          <li>URL, kamuya açık video/gönderi meta verilerini almak için <strong>Apify</strong>'a gönderilir.</li>
+          <li>Alınan içerik, mekan adlarını, adresleri ve kategorileri tespit etmek için <strong>OpenAI</strong>'ya gönderilir.</li>
+          <li>İsteğe bağlı olarak tespit edilen mekan adları <strong>Google Places API</strong> ile doğrulanır.</li>
+        </ol>
+        <p>Hesap bilgileriniz, şifreleriniz veya kişisel profil verileriniz Apify veya OpenAI ile paylaşılmaz. Yalnızca URL ve kamuya açık gönderi meta verileri işlenir.</p>
+        <div class="callout">
+          Yapay zeka tarafından üretilen sonuçlar (mekan adları, adresler, kategoriler) bilgilendirme amaçlıdır ve her zaman doğru olmayabilir. Kullanmadan önce doğrulayınız.
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Third-Party -->
+    <div class="section" id="third-party">
+      <h2><span class="section-num">3</span>
+        <span data-lang-inline="en">Third-Party Services</span>
+        <span data-lang-inline="tr">Üçüncü Taraf Hizmetler</span>
+      </h2>
+      <div data-lang="en"><p>The following providers may receive or process your data. Each has their own privacy policy:</p></div>
+      <div data-lang="tr"><p>Aşağıdaki sağlayıcılar verilerinizi alabilir veya işleyebilir. Her birinin kendi gizlilik politikası vardır:</p></div>
+
+      <div class="provider-list">
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">RevenueCat</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">Subscription &amp; payment processing</span>
+              <span data-lang-inline="tr">Abonelik ve ödeme işlemleri</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://www.revenuecat.com/privacy" target="_blank">Privacy →</a>
+        </div>
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">Supabase</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">Database &amp; user authentication</span>
+              <span data-lang-inline="tr">Veritabanı ve kullanıcı doğrulama</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://supabase.com/privacy" target="_blank">Privacy →</a>
+        </div>
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">OpenAI</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">AI-powered content analysis</span>
+              <span data-lang-inline="tr">Yapay zeka ile içerik analizi</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://openai.com/privacy" target="_blank">Privacy →</a>
+        </div>
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">Apify</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">Social media content retrieval</span>
+              <span data-lang-inline="tr">Sosyal medya içeriği alımı</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://apify.com/privacy-policy" target="_blank">Privacy →</a>
+        </div>
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">Google Places API</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">Location &amp; place data</span>
+              <span data-lang-inline="tr">Konum ve mekan verileri</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://policies.google.com/privacy" target="_blank">Privacy →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Disclosure -->
+    <div class="section" id="disclosure">
+      <h2><span class="section-num">4</span>
+        <span data-lang-inline="en">Data Disclosure</span>
+        <span data-lang-inline="tr">Veri Açıklaması</span>
+      </h2>
+      <div data-lang="en">
+        <p>We may disclose your information only in the following circumstances:</p>
+        <ul>
+          <li>When required by law (e.g., a court order or subpoena)</li>
+          <li>To protect our rights, your safety, or the safety of others, or to investigate fraud</li>
+          <li>With trusted service providers who process data solely on our behalf and are bound by confidentiality obligations</li>
+        </ul>
+      </div>
+      <div data-lang="tr">
+        <p>Bilgilerinizi yalnızca aşağıdaki durumlarda açıklayabiliriz:</p>
+        <ul>
+          <li>Yasal zorunluluk halinde (mahkeme kararı vb.)</li>
+          <li>Haklarımızı, sizin veya başkalarının güvenliğini korumak ya da dolandırıcılığı araştırmak amacıyla</li>
+          <li>Yalnızca bizim adımıza veri işleyen ve gizlilik yükümlülüklerine bağlı güvenilir hizmet sağlayıcılarla</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5. Retention -->
+    <div class="section" id="retention">
+      <h2><span class="section-num">5</span>
+        <span data-lang-inline="en">Data Retention</span>
+        <span data-lang-inline="tr">Veri Saklama</span>
+      </h2>
+      <div data-lang="en">
+        <p>We retain your data for as long as you use the Application and for a reasonable period thereafter. To request deletion of your data, contact us at <a href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a>. We will respond within a reasonable timeframe.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Verilerinizi, Uygulamayı kullandığınız süre boyunca ve bunun ardından makul bir süre daha saklarız. Verilerinizin silinmesini talep etmek için <a href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a> adresinden bizimle iletişime geçin. Makul bir süre içinde yanıt vereceğiz.</p>
+      </div>
+    </div>
+
+    <!-- 6. Opt-Out -->
+    <div class="section" id="optout">
+      <h2><span class="section-num">6</span>
+        <span data-lang-inline="en">Opt-Out</span>
+        <span data-lang-inline="tr">Vazgeçme Hakkı</span>
+      </h2>
+      <div data-lang="en">
+        <p>You can stop all data collection by uninstalling the Application using the standard uninstall process on your device or via your app store. You may also request account deletion by contacting us.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Tüm veri toplamayı, Uygulamayı cihazınızdaki standart kaldırma işlemiyle veya uygulama mağazası aracılığıyla kaldırarak durdurabilirsiniz. Ayrıca bizimle iletişime geçerek hesabınızın silinmesini talep edebilirsiniz.</p>
+      </div>
+    </div>
+
+    <!-- 7. Children -->
+    <div class="section" id="children">
+      <h2><span class="section-num">7</span>
+        <span data-lang-inline="en">Children</span>
+        <span data-lang-inline="tr">Çocuklar</span>
+      </h2>
+      <div data-lang="en">
+        <p>The Application is not directed at children under 13. We do not knowingly collect personal information from children under 13. If we discover that a child under 13 has provided personal information, we will immediately delete it. If you are a parent or guardian and believe your child has submitted data, please contact us at <a href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a>.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Uygulama, 13 yaşın altındaki çocuklara yönelik değildir. 13 yaş altı çocuklardan bilerek kişisel veri toplamıyoruz. Böyle bir durumun farkına varırsak ilgili verileri derhal sileriz. Ebeveyn veya vasi olarak çocuğunuzun veri gönderdiğini düşünüyorsanız lütfen <a href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a> adresinden bizimle iletişime geçin.</p>
+      </div>
+    </div>
+
+    <!-- 8. Security -->
+    <div class="section" id="security">
+      <h2><span class="section-num">8</span>
+        <span data-lang-inline="en">Security</span>
+        <span data-lang-inline="tr">Güvenlik</span>
+      </h2>
+      <div data-lang="en">
+        <p>We implement physical, electronic, and procedural safeguards to protect the information we process. However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your data, we cannot guarantee absolute security.</p>
+      </div>
+      <div data-lang="tr">
+        <p>İşlediğimiz bilgileri korumak için fiziksel, elektronik ve prosedürel önlemler uyguluyoruz. Ancak internet üzerinden iletim veya elektronik depolama yöntemlerinin hiçbiri %100 güvenli değildir. Verilerinizi korumak için ticari olarak kabul görmüş yöntemleri kullanmaya çalışsak da mutlak güvenliği garanti edemeyiz.</p>
+      </div>
+    </div>
+
+    <!-- 9. Changes -->
+    <div class="section" id="changes">
+      <h2><span class="section-num">9</span>
+        <span data-lang-inline="en">Changes to This Policy</span>
+        <span data-lang-inline="tr">Politikadaki Değişiklikler</span>
+      </h2>
+      <div data-lang="en">
+        <p>This Privacy Policy may be updated periodically. We will notify you of changes by updating this page. Continued use of the Application after changes are posted constitutes acceptance of the revised policy. You are advised to check this page regularly.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Bu Gizlilik Politikası periyodik olarak güncellenebilir. Değişiklikler bu sayfa güncellenerek bildirilecektir. Değişikliklerin yayınlanmasının ardından Uygulamayı kullanmaya devam etmek, güncel politikayı kabul ettiğiniz anlamına gelir. Bu sayfayı düzenli olarak kontrol etmenizi öneririz.</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Contact -->
+    <div class="section" id="contact">
+      <div class="contact-card">
+        <p>
+          <span data-lang-inline="en">Questions about this Privacy Policy?</span>
+          <span data-lang-inline="tr">Gizlilik Politikası hakkında sorunuz mu var?</span>
+        </p>
+        <a class="contact-btn" href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 PINs · Batuhan Gul ·
+      <a href="terms.html">
+        <span data-lang-inline="en">Terms &amp; Conditions</span>
+        <span data-lang-inline="tr">Kullanım Koşulları</span>
+      </a>
+    </footer>
+
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+      localStorage.setItem('pins-lang', lang);
+    }
+    const saved = localStorage.getItem('pins-lang');
+    if (saved === 'tr') setLang('tr');
+  </script>
+</body>
+</html>

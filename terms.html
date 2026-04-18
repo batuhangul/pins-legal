@@ -1,134 +1,624 @@
-Terms & Conditions
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions – PINs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-These terms and conditions apply to the pins app (hereby referred to as 
-"Application") for mobile devices that was created by Batuhan Gul (hereby 
-referred to as "Service Provider") as a Freemium service.
+    :root {
+      --bg: #0D0D0D;
+      --bg2: #141414;
+      --bg3: #1A1A1A;
+      --border: #2A2A2A;
+      --accent: #E8C547;
+      --text: #F0F0F0;
+      --muted: #888;
+      --body: #B0B0B0;
+    }
 
-Upon downloading or utilizing the Application, you are automatically agreeing 
-to the following terms. It is strongly advised that you thoroughly read and 
-understand these terms prior to using the Application.
+    html { scroll-behavior: smooth; }
 
-Unauthorized copying, modification of the Application, any part of the 
-Application, or our trademarks is strictly prohibited. Any attempts to extract 
-the source code of the Application, translate the Application into other 
-languages, or create derivative versions are not permitted. All trademarks, 
-copyrights, database rights, and other intellectual property rights related to 
-the Application remain the property of the Service Provider.
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 15px;
+    }
 
-The Service Provider is dedicated to ensuring that the Application is as 
-beneficial and efficient as possible. As such, they reserve the right to modify 
-the Application or charge for their services at any time and for any reason. 
-The Service Provider assures you that any charges for the Application or its 
-services will be clearly communicated to you.
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-The Application stores and processes personal data that you have provided to 
-the Service Provider in order to provide the Service. It is your responsibility 
-to maintain the security of your phone and access to the Application. The 
-Service Provider strongly advises against jailbreaking or rooting your phone, 
-which involves removing software restrictions and limitations imposed by the 
-official operating system of your device. Such actions could expose your phone 
-to malware, viruses, malicious programs, compromise your phone's security 
-features, and may result in the Application not functioning correctly or at all.
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
 
-Third-Party Services
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-Please note that the Application utilizes third-party services that have their 
-own Terms and Conditions. Below are the links to the Terms and Conditions of 
-the third-party service providers used by the Application:
+    .lang-toggle {
+      display: flex;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
 
-    Google Play Services: https://policies.google.com/terms
-    RevenueCat (subscription & payment processing): 
-        https://www.revenuecat.com/terms
-    Supabase (database & user authentication): 
-        https://supabase.com/terms
-    OpenAI (AI-powered content analysis): 
-        https://openai.com/policies/terms-of-use
-    Apify (social media content retrieval): 
-        https://apify.com/terms-of-use
-    Google Places API (location and place data): 
-        https://cloud.google.com/maps-platform/terms
+    .lang-btn {
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: all 0.15s;
+      letter-spacing: 0.05em;
+    }
 
-When you submit a TikTok or Instagram URL through the Application, you 
-represent that you have the right to submit such URL and that your use of the 
-Application complies with the terms of service of the respective social media 
-platforms. The Service Provider is not responsible for any violation of 
-third-party platform terms that may result from your use of the Application.
+    .lang-btn.active {
+      background: var(--accent);
+      color: #0D0D0D;
+    }
 
-Please be aware that the Service Provider does not assume responsibility for 
-certain aspects. Some functions of the Application require an active internet 
-connection, which can be Wi-Fi or provided by your mobile network provider. 
-The Service Provider cannot be held responsible if the Application does not 
-function at full capacity due to lack of access to Wi-Fi or if you have 
-exhausted your data allowance.
+    /* ── Layout ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 100px;
+    }
 
-If you are using the application outside of a Wi-Fi area, please be aware that 
-your mobile network provider's agreement terms still apply. Consequently, you 
-may incur charges from your mobile provider for data usage during the 
-connection to the application, or other third-party charges. By using the 
-application, you accept responsibility for any such charges, including roaming 
-data charges if you use the application outside of your home territory (i.e., 
-region or country) without disabling data roaming. If you are not the bill 
-payer for the device on which you are using the application, they assume that 
-you have obtained permission from the bill payer.
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
 
-Similarly, the Service Provider cannot always assume responsibility for your 
-usage of the application. For instance, it is your responsibility to ensure 
-that your device remains charged. If your device runs out of battery and you 
-are unable to access the Service, the Service Provider cannot be held 
-responsible.
+    .tag {
+      display: inline-block;
+      background: rgba(232,197,71,0.12);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(232,197,71,0.25);
+      margin-bottom: 16px;
+    }
 
-In terms of the Service Provider's responsibility for your use of the 
-application, it is important to note that while they strive to ensure that it 
-is updated and accurate at all times, they do rely on third parties to provide 
-information to them so that they can make it available to you. The Service 
-Provider accepts no liability for any loss, direct or indirect, that you 
-experience as a result of relying entirely on this functionality of the 
-application.
+    h1 {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
 
-Artificial Intelligence
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-The Application incorporates Artificial Intelligence (AI) technologies, 
-including third-party AI services, to provide certain features such as 
-automated location detection from social media content. By using the 
-Application, you acknowledge and agree that AI may be used to process 
-user-submitted content and deliver functionalities. AI-generated results 
-(such as place names and addresses) are provided for informational purposes 
-and may not always be accurate. The Service Provider ensures that all AI 
-usage complies with applicable laws and is designed to benefit the user 
-experience.
+    /* ── Page nav ── */
+    .page-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 48px;
+    }
 
-Subscription and In-App Purchases
+    .page-nav a {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: all 0.15s;
+    }
 
-The Application offers a Freemium model. Certain features may require a paid 
-subscription or one-time purchase. All purchases are processed through the 
-platform's respective app store (Apple App Store or Google Play Store) and are 
-subject to their terms. Subscription management and cancellation can be 
-performed through your app store account settings.
+    .page-nav a:hover { color: var(--text); border-color: #444; }
+    .page-nav a.active {
+      background: var(--accent);
+      color: #0D0D0D;
+      border-color: var(--accent);
+    }
 
-The Service Provider may wish to update the application at some point. The 
-application is currently available as per the requirements for the operating 
-system (and for any additional systems they decide to extend the availability 
-of the application to) may change, and you will need to download the updates 
-if you want to continue using the application. The Service Provider does not 
-guarantee that it will always update the application so that it is relevant to 
-you and/or compatible with the particular operating system version installed on 
-your device. However, you agree to always accept updates to the application 
-when offered to you. The Service Provider may also wish to cease providing the 
-application and may terminate its use at any time without providing termination 
-notice to you. Unless they inform you otherwise, upon any termination, (a) the 
-rights and licenses granted to you in these terms will end; (b) you must cease 
-using the application, and (if necessary) delete it from your device.
+    /* ── TOC ── */
+    .toc {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
 
-Changes to These Terms and Conditions
+    .toc-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
 
-The Service Provider may periodically update their Terms and Conditions. 
-Therefore, you are advised to review this page regularly for any changes. The 
-Service Provider will notify you of any changes by posting the new Terms and 
-Conditions on this page.
+    .toc ol {
+      padding-left: 20px;
+      color: var(--body);
+      font-size: 13px;
+      display: grid;
+      gap: 6px;
+    }
 
-These terms and conditions are effective as of 2026-03-15
+    .toc a { color: var(--body); text-decoration: none; }
+    .toc a:hover { color: var(--accent); }
 
-Contact Us
+    /* ── Sections ── */
+    .section {
+      margin-bottom: 40px;
+    }
 
-If you have any questions or suggestions about the Terms and Conditions, please 
-do not hesitate to contact the Service Provider at pinsappcontact@gmail.com.
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: rgba(232,197,71,0.1);
+      border: 1px solid rgba(232,197,71,0.25);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    p { color: var(--body); margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      color: var(--body);
+      padding-left: 20px;
+      margin-bottom: 14px;
+      display: grid;
+      gap: 6px;
+    }
+
+    li { line-height: 1.6; }
+
+    /* ── Third-party table ── */
+    .provider-list {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .provider-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+
+    .provider-name { font-weight: 600; color: var(--text); font-size: 14px; }
+    .provider-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .provider-link {
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .provider-link:hover { text-decoration: underline; }
+
+    /* ── Callout ── */
+    .callout {
+      background: rgba(232,197,71,0.06);
+      border: 1px solid rgba(232,197,71,0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      color: var(--body);
+      font-size: 14px;
+    }
+
+    /* ── Divider ── */
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    /* ── Contact ── */
+    .contact-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .contact-card p { margin-bottom: 12px; }
+
+    .contact-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0D0D0D;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+
+    .contact-btn:hover { opacity: 0.9; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding-top: 48px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Lang visibility ── */
+    [data-lang] { display: none; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-tr [data-lang="tr"] { display: block; }
+    .lang-en [data-lang-inline="en"] { display: inline; }
+    .lang-tr [data-lang-inline="tr"] { display: inline; }
+    [data-lang-inline] { display: none; }
+  </style>
+</head>
+<body class="lang-en">
+
+  <header>
+    <a class="logo" href="#">📍 PINs</a>
+    <div class="header-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('tr')">TR</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="tag">Legal</div>
+      <h1>
+        <span data-lang="en">Terms &amp; Conditions</span>
+        <span data-lang="tr">Kullanım Koşulları</span>
+      </h1>
+      <div class="meta">
+        <span>
+          <span data-lang-inline="en">Effective as of</span>
+          <span data-lang-inline="tr">Yürürlük tarihi:</span>
+          2026-03-15
+        </span>
+        <span>
+          <span data-lang-inline="en">App:</span>
+          <span data-lang-inline="tr">Uygulama:</span>
+          PINs
+        </span>
+      </div>
+    </div>
+
+    <!-- Page nav -->
+    <nav class="page-nav">
+      <a href="privacy.html">
+        <span data-lang-inline="en">Privacy Policy</span>
+        <span data-lang-inline="tr">Gizlilik Politikası</span>
+      </a>
+      <a href="terms.html" class="active">
+        <span data-lang-inline="en">Terms &amp; Conditions</span>
+        <span data-lang-inline="tr">Kullanım Koşulları</span>
+      </a>
+    </nav>
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">
+        <span data-lang-inline="en">Contents</span>
+        <span data-lang-inline="tr">İçindekiler</span>
+      </div>
+      <ol>
+        <li data-lang="en"><a href="#general">General</a></li>
+        <li data-lang="en"><a href="#third-party">Third-Party Services</a></li>
+        <li data-lang="en"><a href="#ai">Artificial Intelligence</a></li>
+        <li data-lang="en"><a href="#subscriptions">Subscriptions &amp; Purchases</a></li>
+        <li data-lang="en"><a href="#internet">Internet &amp; Charges</a></li>
+        <li data-lang="en"><a href="#accuracy">Accuracy of Information</a></li>
+        <li data-lang="en"><a href="#updates">Updates &amp; Termination</a></li>
+        <li data-lang="en"><a href="#changes">Changes to These Terms</a></li>
+        <li data-lang="en"><a href="#contact">Contact</a></li>
+
+        <li data-lang="tr"><a href="#general">Genel</a></li>
+        <li data-lang="tr"><a href="#third-party">Üçüncü Taraf Hizmetler</a></li>
+        <li data-lang="tr"><a href="#ai">Yapay Zeka</a></li>
+        <li data-lang="tr"><a href="#subscriptions">Abonelik &amp; Satın Alma</a></li>
+        <li data-lang="tr"><a href="#internet">İnternet &amp; Ücretler</a></li>
+        <li data-lang="tr"><a href="#accuracy">Bilgi Doğruluğu</a></li>
+        <li data-lang="tr"><a href="#updates">Güncellemeler &amp; Fesih</a></li>
+        <li data-lang="tr"><a href="#changes">Koşullardaki Değişiklikler</a></li>
+        <li data-lang="tr"><a href="#contact">İletişim</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. General -->
+    <div class="section" id="general">
+      <h2><span class="section-num">1</span>
+        <span data-lang-inline="en">General</span>
+        <span data-lang-inline="tr">Genel</span>
+      </h2>
+
+      <div data-lang="en">
+        <p>These terms and conditions apply to the <strong>PINs</strong> app ("Application") created by Batuhan Gul ("Service Provider") as a Freemium service. By downloading or using the Application, you agree to the following terms.</p>
+        <p>Unauthorized copying, modification of the Application, or our trademarks is strictly prohibited. Attempts to extract the source code, translate the Application into other languages, or create derivative versions are not permitted. All intellectual property rights related to the Application remain the property of the Service Provider.</p>
+        <p>The Service Provider may modify the Application or charge for services at any time. Any charges will be clearly communicated in advance.</p>
+        <p>The Application stores and processes personal data you provide in order to deliver the Service. You are responsible for maintaining the security of your device. The Service Provider strongly advises against jailbreaking or rooting your phone, as this may compromise your security and cause the Application to malfunction.</p>
+      </div>
+
+      <div data-lang="tr">
+        <p><strong>PINs</strong> uygulaması ("Uygulama"), Batuhan Gul ("Servis Sağlayıcı") tarafından Freemium hizmet olarak sunulmaktadır. Uygulamayı indirerek veya kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız.</p>
+        <p>Uygulamanın veya markamızın izinsiz kopyalanması, değiştirilmesi kesinlikle yasaktır. Kaynak kodun çıkarılması, Uygulamanın başka dillere çevrilmesi veya türev sürümler oluşturulması yasaktır. Uygulamaya ilişkin tüm fikri mülkiyet hakları Servis Sağlayıcı'ya aittir.</p>
+        <p>Servis Sağlayıcı, Uygulamayı istediği zaman değiştirebilir veya hizmetleri ücretli hale getirebilir. Herhangi bir ücretlendirme önceden açıkça bildirilecektir.</p>
+        <p>Uygulama, hizmetin sunulabilmesi için sağladığınız kişisel verileri saklar ve işler. Cihazınızın güvenliğini korumak sizin sorumluluğunuzdadır. Servis Sağlayıcı, telefonu jailbreak veya root etmenizi şiddetle tavsiye etmez; bu işlemler güvenliğinizi tehlikeye atabilir ve Uygulamanın düzgün çalışmamasına yol açabilir.</p>
+      </div>
+    </div>
+
+    <!-- 2. Third-Party Services -->
+    <div class="section" id="third-party">
+      <h2><span class="section-num">2</span>
+        <span data-lang-inline="en">Third-Party Services</span>
+        <span data-lang-inline="tr">Üçüncü Taraf Hizmetler</span>
+      </h2>
+
+      <div data-lang="en">
+        <p>The Application uses the following third-party services, each with their own Terms &amp; Conditions:</p>
+      </div>
+      <div data-lang="tr">
+        <p>Uygulama, her birinin kendi Kullanım Koşulları bulunan aşağıdaki üçüncü taraf hizmetleri kullanır:</p>
+      </div>
+
+      <div class="provider-list">
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">RevenueCat</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">Subscription &amp; payment processing</span>
+              <span data-lang-inline="tr">Abonelik ve ödeme işlemleri</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://www.revenuecat.com/terms" target="_blank">Terms →</a>
+        </div>
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">Supabase</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">Database &amp; user authentication</span>
+              <span data-lang-inline="tr">Veritabanı ve kullanıcı doğrulama</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://supabase.com/terms" target="_blank">Terms →</a>
+        </div>
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">OpenAI</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">AI-powered content analysis</span>
+              <span data-lang-inline="tr">Yapay zeka ile içerik analizi</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://openai.com/policies/terms-of-use" target="_blank">Terms →</a>
+        </div>
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">Apify</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">Social media content retrieval</span>
+              <span data-lang-inline="tr">Sosyal medya içeriği alımı</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://apify.com/terms-of-use" target="_blank">Terms →</a>
+        </div>
+        <div class="provider-item">
+          <div>
+            <div class="provider-name">Google Places API</div>
+            <div class="provider-desc">
+              <span data-lang-inline="en">Location &amp; place data</span>
+              <span data-lang-inline="tr">Konum ve mekan verileri</span>
+            </div>
+          </div>
+          <a class="provider-link" href="https://cloud.google.com/maps-platform/terms" target="_blank">Terms →</a>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span data-lang-inline="en">When you submit a TikTok or Instagram URL, you represent that your use of the Application complies with those platforms' terms of service. The Service Provider is not responsible for any violations of third-party platform terms.</span>
+        <span data-lang-inline="tr">TikTok veya Instagram URL'si gönderdiğinizde, bu platformların kullanım koşullarına uygun davrandığınızı kabul etmiş sayılırsınız. Servis Sağlayıcı, üçüncü taraf platform koşullarının ihlalinden sorumlu değildir.</span>
+      </div>
+    </div>
+
+    <!-- 3. AI -->
+    <div class="section" id="ai">
+      <h2><span class="section-num">3</span>
+        <span data-lang-inline="en">Artificial Intelligence</span>
+        <span data-lang-inline="tr">Yapay Zeka</span>
+      </h2>
+
+      <div data-lang="en">
+        <p>The Application uses AI technologies — including third-party AI services — to automatically detect location and place information from social media content you submit.</p>
+        <p>By using the Application, you acknowledge that AI-generated results (such as place names, addresses, and categories) are provided for informational purposes and may not always be accurate. You are encouraged to verify important information before relying on it. The Service Provider ensures all AI usage complies with applicable laws and is designed to benefit your experience.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Uygulama, gönderdiğiniz sosyal medya içeriklerinden konum ve mekan bilgilerini otomatik olarak tespit etmek amacıyla yapay zeka teknolojilerini (üçüncü taraf AI hizmetleri dahil) kullanır.</p>
+        <p>Uygulamayı kullanarak; yapay zeka tarafından üretilen sonuçların (mekan adları, adresler, kategoriler gibi) yalnızca bilgilendirme amaçlı olduğunu ve her zaman doğru olmayabileceğini kabul edersiniz. Önemli bilgileri kullanmadan önce doğrulamanız önerilir. Tüm yapay zeka kullanımı yürürlükteki yasalara uygundur.</p>
+      </div>
+    </div>
+
+    <!-- 4. Subscriptions -->
+    <div class="section" id="subscriptions">
+      <h2><span class="section-num">4</span>
+        <span data-lang-inline="en">Subscriptions &amp; In-App Purchases</span>
+        <span data-lang-inline="tr">Abonelik &amp; Uygulama İçi Satın Alma</span>
+      </h2>
+
+      <div data-lang="en">
+        <p>The Application offers a Freemium model with the following plans:</p>
+        <ul>
+          <li><strong>Gezgin (Free):</strong> Up to 10 place analyses (lifetime), up to 3 folders.</li>
+          <li><strong>Seyyah:</strong> Up to 50 place analyses per month, up to 10 folders. Auto-renewable monthly subscription.</li>
+          <li><strong>Kaşif:</strong> Up to 100 place analyses per month, unlimited folders. Auto-renewable monthly subscription.</li>
+        </ul>
+        <p>All purchases are processed through the Apple App Store or Google Play Store and are subject to their respective terms. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period. You can manage and cancel your subscription at any time through your App Store account settings.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Uygulama, aşağıdaki planları içeren Freemium bir model sunmaktadır:</p>
+        <ul>
+          <li><strong>Gezgin (Ücretsiz):</strong> Toplam 10 mekan analizi (ömür boyu), 3 klasör.</li>
+          <li><strong>Seyyah:</strong> Aylık 50 mekan analizi, 10 klasör. Otomatik yenilenen aylık abonelik.</li>
+          <li><strong>Kaşif:</strong> Aylık 100 mekan analizi, sınırsız klasör. Otomatik yenilenen aylık abonelik.</li>
+        </ul>
+        <p>Tüm satın almalar Apple App Store veya Google Play Store üzerinden işlenir. Abonelikler, mevcut dönemin sonundan en az 24 saat önce iptal edilmediği sürece otomatik olarak yenilenir. Aboneliğinizi App Store hesap ayarlarından istediğiniz zaman yönetebilir ve iptal edebilirsiniz.</p>
+      </div>
+    </div>
+
+    <!-- 5. Internet -->
+    <div class="section" id="internet">
+      <h2><span class="section-num">5</span>
+        <span data-lang-inline="en">Internet Connection &amp; Charges</span>
+        <span data-lang-inline="tr">İnternet Bağlantısı &amp; Ücretler</span>
+      </h2>
+      <div data-lang="en">
+        <p>Some features require an active internet connection (Wi-Fi or mobile data). The Service Provider is not responsible for the Application failing to function due to lack of connectivity or exhausted data allowance.</p>
+        <p>If you use the Application outside a Wi-Fi area, your mobile provider's terms apply and data charges may be incurred, including roaming charges when outside your home region. You accept responsibility for any such charges. If you are not the account holder of the device, please ensure you have permission to use it.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Bazı özellikler aktif bir internet bağlantısı (Wi-Fi veya mobil veri) gerektirir. Bağlantı eksikliği veya veri kotasının dolması nedeniyle Uygulamanın çalışmamasından Servis Sağlayıcı sorumlu değildir.</p>
+        <p>Uygulamayı Wi-Fi dışında kullanıyorsanız mobil operatörünüzün koşulları geçerlidir; roaming dahil veri ücretleri oluşabilir. Bu ücretlerin sorumluluğu kullanıcıya aittir. Cihazın hesap sahibi değilseniz, cihazı kullanmak için gerekli izni aldığınızdan emin olun.</p>
+      </div>
+    </div>
+
+    <!-- 6. Accuracy -->
+    <div class="section" id="accuracy">
+      <h2><span class="section-num">6</span>
+        <span data-lang-inline="en">Accuracy of Information</span>
+        <span data-lang-inline="tr">Bilgi Doğruluğu</span>
+      </h2>
+      <div data-lang="en">
+        <p>The Service Provider strives to keep information accurate and up to date, but relies on third-party data sources. The Service Provider accepts no liability for any direct or indirect loss resulting from relying solely on the information provided by the Application.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Servis Sağlayıcı, bilgilerin doğru ve güncel olması için çaba gösterir; ancak üçüncü taraf veri kaynaklarına dayanır. Uygulamanın sunduğu bilgilere dayanılarak oluşabilecek doğrudan veya dolaylı zararlardan Servis Sağlayıcı sorumlu tutulamaz.</p>
+      </div>
+    </div>
+
+    <!-- 7. Updates -->
+    <div class="section" id="updates">
+      <h2><span class="section-num">7</span>
+        <span data-lang-inline="en">Updates &amp; Termination</span>
+        <span data-lang-inline="tr">Güncellemeler &amp; Fesih</span>
+      </h2>
+      <div data-lang="en">
+        <p>The Service Provider may update the Application from time to time. Updates may be required to continue using the Application. The Service Provider does not guarantee continued compatibility with all operating system versions.</p>
+        <p>The Service Provider may cease providing the Application and terminate its use at any time without prior notice. Upon termination, the rights and licenses granted to you will end, and you must stop using and delete the Application if instructed.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Servis Sağlayıcı, Uygulamayı zaman zaman güncelleyebilir. Uygulamayı kullanmaya devam etmek için güncellemeleri yüklemeniz gerekebilir. Tüm işletim sistemi sürümleriyle uyumluluk garanti edilmez.</p>
+        <p>Servis Sağlayıcı, önceden haber vermeksizin Uygulamanın sunumunu ve kullanımını sonlandırabilir. Fesih durumunda size tanınan haklar ve lisanslar sona erer; istendiğinde Uygulamayı silmeniz gerekir.</p>
+      </div>
+    </div>
+
+    <!-- 8. Changes -->
+    <div class="section" id="changes">
+      <h2><span class="section-num">8</span>
+        <span data-lang-inline="en">Changes to These Terms</span>
+        <span data-lang-inline="tr">Koşullardaki Değişiklikler</span>
+      </h2>
+      <div data-lang="en">
+        <p>These Terms &amp; Conditions may be updated periodically. You are advised to review this page regularly. Changes take effect immediately upon posting. Continued use of the Application constitutes acceptance of the revised terms.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Bu Kullanım Koşulları periyodik olarak güncellenebilir. Bu sayfayı düzenli olarak incelemeniz önerilir. Değişiklikler yayınlandığı anda yürürlüğe girer. Uygulamayı kullanmaya devam etmek, güncel koşulları kabul ettiğiniz anlamına gelir.</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Contact -->
+    <div class="section" id="contact">
+      <div class="contact-card">
+        <p>
+          <span data-lang-inline="en">Questions or suggestions about these Terms &amp; Conditions?</span>
+          <span data-lang-inline="tr">Kullanım Koşulları hakkında sorunuz mu var?</span>
+        </p>
+        <a class="contact-btn" href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 PINs · Batuhan Gul ·
+      <a href="privacy.html">
+        <span data-lang-inline="en">Privacy Policy</span>
+        <span data-lang-inline="tr">Gizlilik Politikası</span>
+      </a>
+    </footer>
+
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+      localStorage.setItem('pins-lang', lang);
+    }
+    // Restore saved preference
+    const saved = localStorage.getItem('pins-lang');
+    if (saved === 'tr') setLang('tr');
+  </script>
+</body>
+</html>
