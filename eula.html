@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EULA – PINs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D0D0D;
+      --bg2: #141414;
+      --bg3: #1A1A1A;
+      --border: #2A2A2A;
+      --accent: #E8C547;
+      --text: #F0F0F0;
+      --muted: #888;
+      --body: #B0B0B0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .lang-toggle {
+      display: flex;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: all 0.15s;
+      letter-spacing: 0.05em;
+    }
+
+    .lang-btn.active { background: var(--accent); color: #0D0D0D; }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 100px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(232,197,71,0.12);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(232,197,71,0.25);
+      margin-bottom: 16px;
+    }
+
+    h1 { font-size: 36px; font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 12px; }
+
+    .meta { color: var(--muted); font-size: 13px; display: flex; gap: 20px; flex-wrap: wrap; }
+
+    .page-nav { display: flex; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; }
+    .page-nav a {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: all 0.15s;
+    }
+    .page-nav a:hover { color: var(--text); border-color: #444; }
+    .page-nav a.active { background: var(--accent); color: #0D0D0D; border-color: var(--accent); }
+
+    .toc {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+    .toc-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .toc ol { padding-left: 20px; color: var(--body); font-size: 13px; display: grid; gap: 6px; list-style-type: lower-alpha; }
+    .toc a { color: var(--body); text-decoration: none; }
+    .toc a:hover { color: var(--accent); }
+
+    .section { margin-bottom: 40px; }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: rgba(232,197,71,0.1);
+      border: 1px solid rgba(232,197,71,0.25);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    p { color: var(--body); margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol { color: var(--body); padding-left: 20px; margin-bottom: 14px; display: grid; gap: 6px; }
+    li { line-height: 1.6; }
+
+    .callout {
+      background: rgba(232,197,71,0.06);
+      border: 1px solid rgba(232,197,71,0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      color: var(--body);
+      font-size: 14px;
+    }
+
+    .warning-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      color: var(--body);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    .contact-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+    .contact-card p { margin-bottom: 12px; }
+    .contact-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0D0D0D;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .contact-btn:hover { opacity: 0.9; }
+
+    footer { text-align: center; color: var(--muted); font-size: 12px; padding-top: 48px; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    [data-lang] { display: none; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-tr [data-lang="tr"] { display: block; }
+    .lang-en [data-lang-inline="en"] { display: inline; }
+    .lang-tr [data-lang-inline="tr"] { display: inline; }
+    [data-lang-inline] { display: none; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 26px; }
+      .page-nav { gap: 6px; }
+      .page-nav a { padding: 7px 12px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body class="lang-en">
+
+  <header>
+    <a class="logo" href="#">📍 PINs</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('tr')">TR</button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="hero">
+      <div class="tag">Legal</div>
+      <h1>
+        <span data-lang="en">End User License Agreement</span>
+        <span data-lang="tr">Son Kullanıcı Lisans Sözleşmesi</span>
+      </h1>
+      <div class="meta">
+        <span>
+          <span data-lang-inline="en">Effective as of</span>
+          <span data-lang-inline="tr">Yürürlük tarihi:</span>
+          2026-04-21
+        </span>
+        <span>App: PINs</span>
+      </div>
+    </div>
+
+    <nav class="page-nav">
+      <a href="privacy.html">
+        <span data-lang-inline="en">Privacy Policy</span>
+        <span data-lang-inline="tr">Gizlilik Politikası</span>
+      </a>
+      <a href="terms.html">
+        <span data-lang-inline="en">Terms &amp; Conditions</span>
+        <span data-lang-inline="tr">Kullanım Koşulları</span>
+      </a>
+      <a href="eula.html" class="active">EULA</a>
+    </nav>
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">
+        <span data-lang-inline="en">Contents</span>
+        <span data-lang-inline="tr">İçindekiler</span>
+      </div>
+      <ol>
+        <li data-lang="en"><a href="#scope">Scope of License</a></li>
+        <li data-lang="en"><a href="#data">Consent to Use of Data</a></li>
+        <li data-lang="en"><a href="#termination">Termination</a></li>
+        <li data-lang="en"><a href="#external">External Services</a></li>
+        <li data-lang="en"><a href="#warranty">No Warranty</a></li>
+        <li data-lang="en"><a href="#liability">Limitation of Liability</a></li>
+        <li data-lang="en"><a href="#export">Export Controls</a></li>
+        <li data-lang="en"><a href="#government">U.S. Government End Users</a></li>
+        <li data-lang="en"><a href="#governing">Governing Law</a></li>
+
+        <li data-lang="tr"><a href="#scope">Lisans Kapsamı</a></li>
+        <li data-lang="tr"><a href="#data">Veri Kullanımına Onay</a></li>
+        <li data-lang="tr"><a href="#termination">Fesih</a></li>
+        <li data-lang="tr"><a href="#external">Harici Hizmetler</a></li>
+        <li data-lang="tr"><a href="#warranty">Garanti Yoktur</a></li>
+        <li data-lang="tr"><a href="#liability">Sorumluluğun Sınırlandırılması</a></li>
+        <li data-lang="tr"><a href="#export">İhracat Kontrolleri</a></li>
+        <li data-lang="tr"><a href="#government">ABD Hükümeti Son Kullanıcıları</a></li>
+        <li data-lang="tr"><a href="#governing">Yürürlük Hukuku</a></li>
+      </ol>
+    </div>
+
+    <!-- Intro -->
+    <div class="section">
+      <div data-lang="en">
+        <p>Apps made available through the App Store are licensed, not sold, to you. Your license to each App is subject to your prior acceptance of either this Licensed Application End User License Agreement ("Standard EULA"), or a custom end user license agreement between you and the Application Provider ("Custom EULA"), if one is provided. Your license to any Apple App under this Standard EULA or Custom EULA is granted by Apple, and your license to any Third Party App under this Standard EULA or Custom EULA is granted by the Application Provider of that Third Party App. Any App that is subject to this Standard EULA is referred to herein as the "Licensed Application." The Application Provider or Apple as applicable ("Licensor") reserves all rights in and to the Licensed Application not expressly granted to you under this Standard EULA.</p>
+      </div>
+      <div data-lang="tr">
+        <p>App Store aracılığıyla sunulan uygulamalar size satılmaz; lisanslanır. Her Uygulamaya ilişkin lisansınız, bu Son Kullanıcı Lisans Sözleşmesi'ni ("Standart EULA") veya varsa Uygulama Sağlayıcısı ile aranızdaki özel bir son kullanıcı lisans sözleşmesini ("Özel EULA") önceden kabul etmenize bağlıdır. Apple Apps için bu Standart EULA veya Özel EULA kapsamında verilen lisans Apple tarafından, Üçüncü Taraf Uygulamalar için verilen lisans ise ilgili Uygulama Sağlayıcısı tarafından verilmektedir. Bu Standart EULA'ya tabi olan her Uygulama, işbu belgede "Lisanslı Uygulama" olarak anılmaktadır. Uygulama Sağlayıcısı veya geçerli olduğu hallerde Apple ("Lisans Veren"), Lisanslı Uygulama üzerinde bu Standart EULA kapsamında açıkça size verilmemiş tüm hakları saklı tutar.</p>
+      </div>
+    </div>
+
+    <!-- a. Scope of License -->
+    <div class="section" id="scope">
+      <h2><span class="section-num">a</span>
+        <span data-lang-inline="en">Scope of License</span>
+        <span data-lang-inline="tr">Lisans Kapsamı</span>
+      </h2>
+      <div data-lang="en">
+        <p>Licensor grants to you a nontransferable license to use the Licensed Application on any Apple-branded products that you own or control and as permitted by the Usage Rules. The terms of this Standard EULA will govern any content, materials, or services accessible from or purchased within the Licensed Application as well as upgrades provided by Licensor that replace or supplement the original Licensed Application, unless such upgrade is accompanied by a Custom EULA.</p>
+        <p>Except as provided in the Usage Rules, you may not distribute or make the Licensed Application available over a network where it could be used by multiple devices at the same time. You may not transfer, redistribute or sublicense the Licensed Application and, if you sell your Apple Device to a third party, you must remove the Licensed Application from the Apple Device before doing so.</p>
+        <p>You may not copy (except as permitted by this license and the Usage Rules), reverse-engineer, disassemble, attempt to derive the source code of, modify, or create derivative works of the Licensed Application, any updates, or any part thereof (except as and only to the extent that any foregoing restriction is prohibited by applicable law or to the extent as may be permitted by the licensing terms governing use of any open-sourced components included with the Licensed Application).</p>
+      </div>
+      <div data-lang="tr">
+        <p>Lisans Veren, size sahip olduğunuz veya kontrolünüzdeki Apple markalı ürünlerde ve Kullanım Kuralları'nın izin verdiği ölçüde Lisanslı Uygulamayı kullanmak için devredilemez bir lisans verir. Bu Standart EULA'nın koşulları; Lisanslı Uygulama'dan erişilebilen veya içinde satın alınan tüm içerik, materyal ya da hizmetleri, ayrıca böyle bir yükseltmeye Özel EULA eşlik etmediği sürece Lisans Veren tarafından sağlanan ve orijinal Lisanslı Uygulamanın yerini alan ya da onu tamamlayan yükseltmeleri de kapsar.</p>
+        <p>Kullanım Kuralları'nda öngörülenler dışında, Lisanslı Uygulamayı aynı anda birden fazla cihaz tarafından kullanılabileceği bir ağda dağıtamazsınız veya erişime açamazsınız. Lisanslı Uygulamayı devredemez, yeniden dağıtamaz veya alt lisans veremezsiniz; Apple Cihazınızı üçüncü bir kişiye satmanız durumunda Lisanslı Uygulamayı satıştan önce cihazdan kaldırmanız gerekmektedir.</p>
+        <p>Lisanslı Uygulamayı, herhangi bir güncellemesini veya bunların herhangi bir bölümünü (bu lisans ve Kullanım Kuralları'nın izin verdiği haller dışında) kopyalayamazsınız; tersine mühendislik yapamaz, parçalara ayıramazsınız, kaynak kodunu elde etmeye çalışamazsınız, değiştiremez ya da türev çalışmalar oluşturamazsınız (yürürlükteki yasalar tarafından yasaklanmamış ya da Lisanslı Uygulama bünyesindeki açık kaynaklı bileşenlerin lisans koşullarınca izin verilen durumlar hariç).</p>
+      </div>
+    </div>
+
+    <!-- b. Consent to Use of Data -->
+    <div class="section" id="data">
+      <h2><span class="section-num">b</span>
+        <span data-lang-inline="en">Consent to Use of Data</span>
+        <span data-lang-inline="tr">Veri Kullanımına Onay</span>
+      </h2>
+      <div data-lang="en">
+        <p>You agree that Licensor may collect and use technical data and related information—including but not limited to technical information about your device, system and application software, and peripherals—that is gathered periodically to facilitate the provision of software updates, product support, and other services to you (if any) related to the Licensed Application. Licensor may use this information, as long as it is in a form that does not personally identify you, to improve its products or to provide services or technologies to you.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Lisans Veren'in; yazılım güncellemelerinin, ürün desteğinin ve Lisanslı Uygulama ile ilgili diğer hizmetlerin (varsa) sağlanmasını kolaylaştırmak amacıyla periyodik olarak toplanan teknik verileri ve ilgili bilgileri (cihazınıza, sistem ve uygulama yazılımlarınıza ve çevre birimlerinize ilişkin teknik bilgiler dahil ancak bunlarla sınırlı olmaksızın) toplayabileceğini ve kullanabileceğini kabul edersiniz. Lisans Veren, sizi kişisel olarak tanımlamayan bir formda olduğu sürece bu bilgileri ürünlerini iyileştirmek ya da size hizmet veya teknoloji sunmak amacıyla kullanabilir.</p>
+      </div>
+    </div>
+
+    <!-- c. Termination -->
+    <div class="section" id="termination">
+      <h2><span class="section-num">c</span>
+        <span data-lang-inline="en">Termination</span>
+        <span data-lang-inline="tr">Fesih</span>
+      </h2>
+      <div data-lang="en">
+        <p>This Standard EULA is effective until terminated by you or Licensor. Your rights under this Standard EULA will terminate automatically if you fail to comply with any of its terms.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Bu Standart EULA, siz veya Lisans Veren tarafından feshedilene kadar yürürlükte kalır. Bu Standart EULA'nın herhangi bir hükmüne uymamanız durumunda, bu Standart EULA kapsamındaki haklarınız otomatik olarak sona erecektir.</p>
+      </div>
+    </div>
+
+    <!-- d. External Services -->
+    <div class="section" id="external">
+      <h2><span class="section-num">d</span>
+        <span data-lang-inline="en">External Services</span>
+        <span data-lang-inline="tr">Harici Hizmetler</span>
+      </h2>
+      <div data-lang="en">
+        <p>The Licensed Application may enable access to Licensor's and/or third-party services and websites (collectively and individually, "External Services"). You agree to use the External Services at your sole risk. Licensor is not responsible for examining or evaluating the content or accuracy of any third-party External Services, and shall not be liable for any such third-party External Services.</p>
+        <p>Data displayed by any Licensed Application or External Service, including but not limited to financial, medical and location information, is for general informational purposes only and is not guaranteed by Licensor or its agents. You will not use the External Services in any manner that is inconsistent with the terms of this Standard EULA or that infringes the intellectual property rights of Licensor or any third party. You agree not to use the External Services to harass, abuse, stalk, threaten or defame any person or entity, and that Licensor is not responsible for any such use.</p>
+        <p>External Services may not be available in all languages or in your Home Country, and may not be appropriate or available for use in any particular location. To the extent you choose to use such External Services, you are solely responsible for compliance with any applicable laws. Licensor reserves the right to change, suspend, remove, disable or impose access restrictions or limits on any External Services at any time without notice or liability to you.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Lisanslı Uygulama, Lisans Veren'e ve/veya üçüncü taraflara ait hizmet ve web sitelerine (topluca ve münferiden "Harici Hizmetler") erişimi mümkün kılabilir. Harici Hizmetleri yalnızca kendi riskinize kullanmayı kabul edersiniz. Lisans Veren, herhangi bir üçüncü taraf Harici Hizmetin içeriğini veya doğruluğunu incelemek veya değerlendirmekle yükümlü değildir ve bu tür üçüncü taraf Harici Hizmetler için sorumlu tutulamaz.</p>
+        <p>Herhangi bir Lisanslı Uygulama veya Harici Hizmet tarafından görüntülenen veriler (finansal, tıbbi ve konum bilgileri dahil ancak bunlarla sınırlı olmaksızın) yalnızca genel bilgi amaçlıdır ve Lisans Veren veya temsilcileri tarafından garanti edilmez. Harici Hizmetleri, bu Standart EULA'nın koşullarıyla çelişen ya da Lisans Veren'in veya herhangi bir üçüncü tarafın fikri mülkiyet haklarını ihlal eden bir şekilde kullanamazsınız. Harici Hizmetleri herhangi bir kişi veya kuruluşu taciz etmek, istismar etmek, takip etmek, tehdit etmek veya iftira atmak amacıyla kullanmamayı kabul eder, bu tür kullanımlardan Lisans Veren'in sorumlu olmadığını anlarsınız.</p>
+        <p>Harici Hizmetler tüm dillerde veya bulunduğunuz ülkede mevcut olmayabilir; belirli konumlarda kullanım için uygun ya da mevcut olmayabilir. Harici Hizmetleri kullanmayı seçmeniz durumunda, yürürlükteki tüm yasalara uyumdan yalnızca siz sorumlusunuzdur. Lisans Veren, herhangi bir Harici Hizmet üzerinde değişiklik yapma, askıya alma, kaldırma, devre dışı bırakma veya erişim kısıtlaması ya da sınırı getirme hakkını önceden bildirimde bulunmaksızın ve size karşı herhangi bir yükümlülük doğurmaksızın her zaman saklı tutar.</p>
+      </div>
+    </div>
+
+    <!-- e. No Warranty -->
+    <div class="section" id="warranty">
+      <h2><span class="section-num">e</span>
+        <span data-lang-inline="en">No Warranty</span>
+        <span data-lang-inline="tr">Garanti Yoktur</span>
+      </h2>
+      <div data-lang="en">
+        <div class="warning-box">
+          YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT USE OF THE LICENSED APPLICATION IS AT YOUR SOLE RISK. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE LICENSED APPLICATION AND ANY SERVICES PERFORMED OR PROVIDED BY THE LICENSED APPLICATION ARE PROVIDED "AS IS" AND "AS AVAILABLE," WITH ALL FAULTS AND WITHOUT WARRANTY OF ANY KIND, AND LICENSOR HEREBY DISCLAIMS ALL WARRANTIES AND CONDITIONS WITH RESPECT TO THE LICENSED APPLICATION AND ANY SERVICES, EITHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES AND/OR CONDITIONS OF MERCHANTABILITY, OF SATISFACTORY QUALITY, OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY, OF QUIET ENJOYMENT, AND OF NONINFRINGEMENT OF THIRD-PARTY RIGHTS. NO ORAL OR WRITTEN INFORMATION OR ADVICE GIVEN BY LICENSOR OR ITS AUTHORIZED REPRESENTATIVE SHALL CREATE A WARRANTY. SHOULD THE LICENSED APPLICATION OR SERVICES PROVE DEFECTIVE, YOU ASSUME THE ENTIRE COST OF ALL NECESSARY SERVICING, REPAIR, OR CORRECTION. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES OR LIMITATIONS ON APPLICABLE STATUTORY RIGHTS OF A CONSUMER, SO THE ABOVE EXCLUSION AND LIMITATIONS MAY NOT APPLY TO YOU.
+        </div>
+      </div>
+      <div data-lang="tr">
+        <div class="warning-box">
+          LİSANSLI UYGULAMAYI KULLANMANIN YALNIZCA KENDİ RİSKİNİZDE OLDUĞUNU AÇIKÇA KABUL VE BEYAN EDERSİNİZ. YÜRÜRLÜKTEKİ YASANIN İZİN VERDİĞİ AZAMİ ÖLÇÜDE, LİSANSLI UYGULAMA VE LİSANSLI UYGULAMA TARAFINDAN GERÇEKLEŞTİRİLEN VEYA SAĞLANAN HERHANGİ BİR HİZMET, TÜM HATALAR DAHİL OLACAK ŞEKİLDE "OLDUĞU GİBİ" VE "MEVCUT HALIYLA" SUNULMAKTA OLUP HERHANGİ BİR GARANTİ İÇERMEMEKTEDİR. LİSANS VEREN, TİCARİ ELVERİŞLİLİK, YETERLİ KALİTE, BELİRLİ BİR AMACA UYGUNLUK, DOĞRULUK, RAHAT KULLANIM VE ÜÇÜNCÜ TARAF HAKLARININ İHLAL EDİLMEMESİ DE DAHİL OLMAK ÜZERE, AÇIK, ZIMNİ VEYA YASAL NİTELİKTEKİ TÜM GARANTİ VE KOŞULLARDAN AÇIKÇA FERAGAT ETMEKTEDİR. LİSANS VEREN VEYA YETKİLİ TEMSİLCİSİ TARAFINDAN SÖZLÜ YA DA YAZILI OLARAK VERİLEN HERHANGİ BİR BİLGİ VEYA TAVSİYE BİR GARANTİ OLUŞTURMAZ. LİSANSLI UYGULAMANIN VEYA HİZMETLERİN KUSURLU OLDUĞUNUN ANLAŞILMASI HALİNDE, GEREKLİ TÜM SERVİS, ONARIM VEYA DÜZELTME MALİYETLERİNİN TAMAMI SİZE AİT OLACAKTIR. BAZI YETKİ ALANLARI ZIMNİ GARANTİLERİN HARİÇ TUTULMASINA VEYA TÜKETİCİNİN YASAL HAKLARININ SINIRLANMASINA İZİN VERMEMEKTE OLUP YUKARIDAKİ İSTİSNALAR VE SINIRLAMALAR SİZİN İÇİN GEÇERLİ OLMAYAB İLİR.
+        </div>
+      </div>
+    </div>
+
+    <!-- f. Limitation of Liability -->
+    <div class="section" id="liability">
+      <h2><span class="section-num">f</span>
+        <span data-lang-inline="en">Limitation of Liability</span>
+        <span data-lang-inline="tr">Sorumluluğun Sınırlandırılması</span>
+      </h2>
+      <div data-lang="en">
+        <div class="warning-box">
+          TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT SHALL LICENSOR BE LIABLE FOR PERSONAL INJURY OR ANY INCIDENTAL, SPECIAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, LOSS OF DATA, BUSINESS INTERRUPTION, OR ANY OTHER COMMERCIAL DAMAGES OR LOSSES, ARISING OUT OF OR RELATED TO YOUR USE OF OR INABILITY TO USE THE LICENSED APPLICATION, HOWEVER CAUSED, REGARDLESS OF THE THEORY OF LIABILITY (CONTRACT, TORT, OR OTHERWISE) AND EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OF LIABILITY FOR PERSONAL INJURY, OR OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS LIMITATION MAY NOT APPLY TO YOU.
+        </div>
+        <p>In no event shall Licensor's total liability to you for all damages (other than as may be required by applicable law in cases involving personal injury) exceed the amount of fifty dollars ($50.00). The foregoing limitations will apply even if the above stated remedy fails of its essential purpose.</p>
+      </div>
+      <div data-lang="tr">
+        <div class="warning-box">
+          YASANIN YASAKLAMADIGI ÖLÇÜDE, LİSANS VEREN HİÇBİR KOŞULDA; KAR KAYBI, VERİ KAYBI, İŞ KESİNTİSİ VEYA DİĞER TİCARİ KAYIPLAR YA DA ZARARLAR DA DAHİL OLMAK ÜZERE ANCAK BUNLARLA SINIRLI KALMAKSIZIN, LİSANSLI UYGULAMAYI KULLANMANIZDAN VEYA KULLANAMAMANIZDAN KAYNAKLANAN VEYA BUNUNLA İLGİLİ KİŞİSEL YARALANMA VEYA HERHANGİ BİR ARIZI, ÖZEL, DOLAYLI YA DA SONUÇSAL ZARARLARDAN SORUMLU TUTULAMAZ. BU DURUM, SORUMLULUĞUN DAYANAĞINDAN (SÖZLEŞME, HAKSIZ FİİL VEYA DİĞER) BAĞIMSIZ OLARAK VE LİSANS VERENİN BU TÜR ZARARLARIN OLASILIĞINDAN HABERDAR OLUP OLMADIĞINDAN BAĞIMSIZ OLARAK GEÇERLİDİR. BAZI YETKİ ALANLARI KİŞİSEL YARALANMA NEDENİYLE VEYA ARIZI YA DA SONUÇSAL ZARARLAR İÇİN SORUMLULUĞUN SINIRLANDIRILMASINA İZİN VERMEMEKTE OLUP BU SINIRLANDIRMA SİZİN İÇİN GEÇERLİ OLMAYAB İLİR.
+        </div>
+        <p>Lisans Veren'in tüm zararlar için size karşı toplam sorumluluğu (kişisel yaralanmayı kapsayan durumlarda yürürlükteki yasaların gerektirdiği haller dışında) hiçbir koşulda elli Amerikan Doları (50,00 USD) miktarını aşmayacaktır. Yukarıda belirtilen çarenin temel amacını yerine getirememesi halinde dahi bu sınırlamalar geçerliliğini koruyacaktır.</p>
+      </div>
+    </div>
+
+    <!-- g. Export Controls -->
+    <div class="section" id="export">
+      <h2><span class="section-num">g</span>
+        <span data-lang-inline="en">Export Controls</span>
+        <span data-lang-inline="tr">İhracat Kontrolleri</span>
+      </h2>
+      <div data-lang="en">
+        <p>You may not use or otherwise export or re-export the Licensed Application except as authorized by United States law and the laws of the jurisdiction in which the Licensed Application was obtained. In particular, but without limitation, the Licensed Application may not be exported or re-exported (a) into any U.S.-embargoed countries or (b) to anyone on the U.S. Treasury Department's Specially Designated Nationals List or the U.S. Department of Commerce Denied Persons List or Entity List.</p>
+        <p>By using the Licensed Application, you represent and warrant that you are not located in any such country or on any such list. You also agree that you will not use these products for any purposes prohibited by United States law, including, without limitation, the development, design, manufacture, or production of nuclear, missile, or chemical or biological weapons.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Lisanslı Uygulamayı, Amerika Birleşik Devletleri hukuku ve Lisanslı Uygulamanın edinildiği yargı alanının yasaları tarafından yetkilendirilenler dışında kullanamaz, ihraç edemez veya yeniden ihraç edemezsiniz. Özellikle ve sınırlama olmaksızın, Lisanslı Uygulama; (a) ABD ambargosu uygulanan ülkelere veya (b) ABD Hazine Bakanlığı'nın Özel Olarak Belirlenen Uyruklular Listesi'nde ya da ABD Ticaret Bakanlığı'nın Reddedilen Kişiler Listesi veya Kuruluş Listesi'nde yer alan kişilere ihraç edilemez veya yeniden ihraç edilemez.</p>
+        <p>Lisanslı Uygulamayı kullanarak, böyle bir ülkede bulunmadığınızı ve söz konusu listelerden hiçbirinde yer almadığınızı beyan ve taahhüt edersiniz. Ayrıca bu ürünleri nükleer, füze, kimyasal veya biyolojik silahların geliştirilmesi, tasarlanması, üretilmesi veya imal edilmesi de dahil olmak üzere ABD hukuku tarafından yasaklanan herhangi bir amaçla kullanmayacağınızı kabul edersiniz.</p>
+      </div>
+    </div>
+
+    <!-- h. U.S. Government End Users -->
+    <div class="section" id="government">
+      <h2><span class="section-num">h</span>
+        <span data-lang-inline="en">U.S. Government End Users</span>
+        <span data-lang-inline="tr">ABD Hükümeti Son Kullanıcıları</span>
+      </h2>
+      <div data-lang="en">
+        <p>The Licensed Application and related documentation are "Commercial Items", as that term is defined at 48 C.F.R. §2.101, consisting of "Commercial Computer Software" and "Commercial Computer Software Documentation", as such terms are used in 48 C.F.R. §12.212 or 48 C.F.R. §227.7202, as applicable. Consistent with 48 C.F.R. §12.212 or 48 C.F.R. §227.7202-1 through 227.7202-4, as applicable, the Commercial Computer Software and Commercial Computer Software Documentation are being licensed to U.S. Government end users (a) only as Commercial Items and (b) with only those rights as are granted to all other end users pursuant to the terms and conditions herein. Unpublished-rights reserved under the copyright laws of the United States.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Lisanslı Uygulama ve ilgili belgeler, 48 C.F.R. §2.101'de tanımlandığı üzere "Ticari Kalemler"dir ve 48 C.F.R. §12.212 veya 48 C.F.R. §227.7202'de kullanıldığı şekliyle "Ticari Bilgisayar Yazılımı" ve "Ticari Bilgisayar Yazılımı Belgeleri"nden oluşmaktadır. 48 C.F.R. §12.212 veya 48 C.F.R. §227.7202-1 ile 227.7202-4 hükümlerine uygun olarak, Ticari Bilgisayar Yazılımı ve Ticari Bilgisayar Yazılımı Belgeleri, ABD Hükümeti son kullanıcılarına (a) yalnızca Ticari Kalemler olarak ve (b) yalnızca bu hüküm ve koşullar çerçevesinde diğer tüm son kullanıcılara tanınan haklarla lisanslanmaktadır. Yayımlanmamış haklar, Amerika Birleşik Devletleri telif hakkı yasaları kapsamında saklıdır.</p>
+      </div>
+    </div>
+
+    <!-- i. Governing Law -->
+    <div class="section" id="governing">
+      <h2><span class="section-num">i</span>
+        <span data-lang-inline="en">Governing Law</span>
+        <span data-lang-inline="tr">Yürürlük Hukuku</span>
+      </h2>
+      <div data-lang="en">
+        <p>Except to the extent expressly provided in the following paragraph, this Agreement and the relationship between you and Apple shall be governed by the laws of the State of California, excluding its conflicts of law provisions. You and Apple agree to submit to the personal and exclusive jurisdiction of the courts located within the county of Santa Clara, California, to resolve any dispute or claim arising from this Agreement.</p>
+        <p>If (a) you are not a U.S. citizen; (b) you do not reside in the U.S.; (c) you are not accessing the Service from the U.S.; and (d) you are a citizen of one of the countries identified below, you hereby agree that any dispute or claim arising from this Agreement shall be governed by the applicable law set forth below, without regard to any conflict of law provisions, and you hereby irrevocably submit to the non-exclusive jurisdiction of the courts located in the state, province or country identified below whose law governs:</p>
+        <div class="callout">
+          If you are a citizen of any European Union country or Switzerland, Norway or Iceland, the governing law and forum shall be the laws and courts of your usual place of residence.
+        </div>
+        <p>Specifically excluded from application to this Agreement is that law known as the United Nations Convention on the International Sale of Goods.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Aşağıdaki paragrafta açıkça belirtilenler dışında, bu Sözleşme ve sizinle Apple arasındaki ilişki, Kaliforniya Eyaleti'nin yasaları tarafından, kanunlar ihtilafı hükümleri hariç tutularak yönetilecektir. Siz ve Apple, bu Sözleşmeden doğan herhangi bir anlaşmazlık veya talebin çözümü için Kaliforniya, Santa Clara County'de bulunan mahkemelerin kişisel ve münhasır yargı yetkisine tabi olmayı kabul edersiniz.</p>
+        <p>(a) ABD vatandaşı değilseniz; (b) ABD'de ikamet etmiyorsanız; (c) Hizmete ABD'den erişmiyorsanız ve (d) aşağıda belirtilen ülkelerden birinin vatandaşıysanız, bu Sözleşmeden doğan herhangi bir anlaşmazlık veya talebin, kanunlar ihtilafı hükümlerine bakılmaksızın aşağıda belirtilen geçerli hukuk tarafından yönetileceğini ve yargı yetkisine sahip olan aşağıdaki eyalet, il veya ülkedeki mahkemelerin münhasır olmayan yargı yetkisine geri alınamaz biçimde tabi olduğunuzu kabul edersiniz:</p>
+        <div class="callout">
+          Herhangi bir Avrupa Birliği ülkesinin, İsviçre'nin, Norveç'in veya İzlanda'nın vatandaşıysanız, yürürlük hukuku ve yetkili mahkeme, olağan ikamet yerinizin yasaları ve mahkemeleri olacaktır.
+        </div>
+        <p>Bu Sözleşmeye, Uluslararası Mal Satışına İlişkin Birleşmiş Milletler Sözleşmesi olarak bilinen hukuk uygulanmaz.</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Contact -->
+    <div class="section" id="contact">
+      <div class="contact-card">
+        <p>
+          <span data-lang-inline="en">Questions about this EULA?</span>
+          <span data-lang-inline="tr">Bu EULA hakkında sorunuz mu var?</span>
+        </p>
+        <a class="contact-btn" href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 PINs · Batuhan Gul ·
+      <a href="privacy.html">
+        <span data-lang-inline="en">Privacy Policy</span>
+        <span data-lang-inline="tr">Gizlilik Politikası</span>
+      </a>
+      ·
+      <a href="terms.html">
+        <span data-lang-inline="en">Terms &amp; Conditions</span>
+        <span data-lang-inline="tr">Kullanım Koşulları</span>
+      </a>
+    </footer>
+
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+      localStorage.setItem('pins-lang', lang);
+    }
+    const saved = localStorage.getItem('pins-lang');
+    if (saved === 'tr') setLang('tr');
+  </script>
+</body>
+</html>
