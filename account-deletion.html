@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Deletion – PINs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D0D0D;
+      --bg2: #141414;
+      --bg3: #1A1A1A;
+      --border: #2A2A2A;
+      --accent: #E8C547;
+      --text: #F0F0F0;
+      --muted: #888;
+      --body: #B0B0B0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .lang-toggle {
+      display: flex;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: all 0.15s;
+      letter-spacing: 0.05em;
+    }
+
+    .lang-btn.active { background: var(--accent); color: #0D0D0D; }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 100px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(232,197,71,0.12);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(232,197,71,0.25);
+      margin-bottom: 16px;
+    }
+
+    h1 { font-size: 36px; font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 12px; }
+
+    .meta { color: var(--muted); font-size: 13px; display: flex; gap: 20px; flex-wrap: wrap; }
+
+    .page-nav { display: flex; gap: 8px; margin-bottom: 48px; }
+    .page-nav a {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: all 0.15s;
+    }
+    .page-nav a:hover { color: var(--text); border-color: #444; }
+    .page-nav a.active { background: var(--accent); color: #0D0D0D; border-color: var(--accent); }
+
+    .section { margin-bottom: 40px; }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: rgba(232,197,71,0.1);
+      border: 1px solid rgba(232,197,71,0.25);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    p { color: var(--body); margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol { color: var(--body); padding-left: 20px; margin-bottom: 14px; display: grid; gap: 6px; }
+    li { line-height: 1.6; }
+
+    .step-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .step-title { font-weight: 700; color: var(--text); font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+    .data-table th {
+      background: var(--bg3);
+      color: var(--muted);
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-table td {
+      padding: 10px 14px;
+      color: var(--body);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+    .callout {
+      background: rgba(232,197,71,0.06);
+      border: 1px solid rgba(232,197,71,0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      color: var(--body);
+      font-size: 14px;
+    }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    .contact-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+    .contact-card p { margin-bottom: 12px; }
+    .contact-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0D0D0D;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .contact-btn:hover { opacity: 0.9; }
+
+    footer { text-align: center; color: var(--muted); font-size: 12px; padding-top: 48px; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    [data-lang] { display: none; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-tr [data-lang="tr"] { display: block; }
+    .lang-en [data-lang-inline="en"] { display: inline; }
+    .lang-tr [data-lang-inline="tr"] { display: inline; }
+    [data-lang-inline] { display: none; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 26px; }
+      .data-table { font-size: 12px; }
+      .data-table th, .data-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body class="lang-en">
+
+  <header>
+    <a class="logo" href="#">📍 PINs</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('tr')">TR</button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="hero">
+      <div class="tag">Legal</div>
+      <h1>
+        <span data-lang="en">Account &amp; Data Deletion</span>
+        <span data-lang="tr">Hesap ve Veri Silme</span>
+      </h1>
+      <div class="meta">
+        <span>App: PINs (com.pins.app)</span>
+        <span>Developer: Batuhan Gul</span>
+      </div>
+    </div>
+
+    <nav class="page-nav">
+      <a href="privacy.html">
+        <span data-lang-inline="en">Privacy Policy</span>
+        <span data-lang-inline="tr">Gizlilik Politikası</span>
+      </a>
+      <a href="terms.html">
+        <span data-lang-inline="en">Terms &amp; Conditions</span>
+        <span data-lang-inline="tr">Kullanım Koşulları</span>
+      </a>
+      <a href="account-deletion.html" class="active">
+        <span data-lang-inline="en">Account Deletion</span>
+        <span data-lang-inline="tr">Hesap Silme</span>
+      </a>
+    </nav>
+
+    <!-- Intro -->
+    <div class="section">
+      <div data-lang="en">
+        <p>This page explains how users of the <strong>PINs</strong> app can request deletion of their account and associated data.</p>
+      </div>
+      <div data-lang="tr">
+        <p>Bu sayfa, <strong>PINs</strong> uygulaması kullanıcılarının hesaplarının ve ilişkili verilerinin silinmesini nasıl talep edebileceklerini açıklar.</p>
+      </div>
+    </div>
+
+    <!-- 1. How to request -->
+    <div class="section" id="how">
+      <h2><span class="section-num">1</span>
+        <span data-lang-inline="en">How to Request Deletion</span>
+        <span data-lang-inline="tr">Silme Talebi Nasıl Yapılır</span>
+      </h2>
+
+      <div class="step-card">
+        <div class="step-title">
+          <span data-lang-inline="en">Option A — In the app (instant)</span>
+          <span data-lang-inline="tr">Seçenek A — Uygulama içinden (anında)</span>
+        </div>
+        <div data-lang="en">
+          <ol>
+            <li>Open the PINs app and go to the <strong>Profile</strong> tab.</li>
+            <li>Scroll down and tap <strong>"Delete Account"</strong>.</li>
+            <li>Confirm the deletion in the dialog that appears.</li>
+          </ol>
+          <p>Your account and data are deleted immediately once confirmed.</p>
+        </div>
+        <div data-lang="tr">
+          <ol>
+            <li>PINs uygulamasını açın ve <strong>Profil</strong> sekmesine gidin.</li>
+            <li>Aşağı kaydırıp <strong>"Hesabı Sil"</strong> seçeneğine dokunun.</li>
+            <li>Açılan onay penceresinde silme işlemini onaylayın.</li>
+          </ol>
+          <p>Onayladığınızda hesabınız ve verileriniz hemen silinir.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-title">
+          <span data-lang-inline="en">Option B — Without the app</span>
+          <span data-lang-inline="tr">Seçenek B — Uygulama olmadan</span>
+        </div>
+        <div data-lang="en">
+          <p>Send an email to <a href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a> from the email address associated with your account, with the subject line <strong>"Account Deletion Request"</strong>. We will verify your identity and process the deletion within 30 days.</p>
+        </div>
+        <div data-lang="tr">
+          <p>Hesabınızla ilişkili e-posta adresinden, konu satırına <strong>"Hesap Silme Talebi"</strong> yazarak <a href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a> adresine e-posta gönderin. Kimliğinizi doğruladıktan sonra talebinizi 30 gün içinde işleme alırız.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. What gets deleted -->
+    <div class="section" id="deleted">
+      <h2><span class="section-num">2</span>
+        <span data-lang-inline="en">Data That Is Deleted</span>
+        <span data-lang-inline="tr">Silinen Veriler</span>
+      </h2>
+      <div data-lang="en">
+        <table class="data-table">
+          <thead><tr><th>Data</th><th>What happens</th></tr></thead>
+          <tbody>
+            <tr><td>Account &amp; profile (name, email, avatar photo)</td><td>Permanently deleted</td></tr>
+            <tr><td>Saved places, folders, and notes</td><td>Permanently deleted</td></tr>
+            <tr><td>Submitted TikTok/Instagram URLs &amp; analysis history</td><td>Permanently deleted</td></tr>
+            <tr><td>Location preferences</td><td>Permanently deleted</td></tr>
+          </tbody>
+        </table>
+        <p>Deletion is permanent and cannot be undone.</p>
+      </div>
+      <div data-lang="tr">
+        <table class="data-table">
+          <thead><tr><th>Veri</th><th>Ne olur</th></tr></thead>
+          <tbody>
+            <tr><td>Hesap ve profil (isim, e-posta, profil fotoğrafı)</td><td>Kalıcı olarak silinir</td></tr>
+            <tr><td>Kaydedilen mekanlar, klasörler ve notlar</td><td>Kalıcı olarak silinir</td></tr>
+            <tr><td>Gönderilen TikTok/Instagram URL'leri ve analiz geçmişi</td><td>Kalıcı olarak silinir</td></tr>
+            <tr><td>Konum tercihleri</td><td>Kalıcı olarak silinir</td></tr>
+          </tbody>
+        </table>
+        <p>Silme işlemi kalıcıdır ve geri alınamaz.</p>
+      </div>
+    </div>
+
+    <!-- 3. What is retained -->
+    <div class="section" id="retained">
+      <h2><span class="section-num">3</span>
+        <span data-lang-inline="en">Data That May Be Retained</span>
+        <span data-lang-inline="tr">Saklanabilecek Veriler</span>
+      </h2>
+      <div data-lang="en">
+        <p>Some limited data may be retained after account deletion, solely where required:</p>
+        <ul>
+          <li><strong>Purchase/subscription records</strong> — retained by our payment processor (RevenueCat) and Google Play as required for accounting, tax, and fraud-prevention obligations, typically for up to 7 years.</li>
+          <li><strong>Aggregated, de-identified usage data</strong> that can no longer be linked to you may be retained for product improvement.</li>
+        </ul>
+        <div class="callout">No content, location, or profile data tied to your identity is retained beyond what is described above.</div>
+      </div>
+      <div data-lang="tr">
+        <p>Hesap silindikten sonra yalnızca gerekli olduğu ölçüde bazı sınırlı veriler saklanabilir:</p>
+        <ul>
+          <li><strong>Satın alma/abonelik kayıtları</strong> — ödeme sağlayıcımız (RevenueCat) ve Google Play tarafından muhasebe, vergi ve dolandırıcılık önleme yükümlülükleri gereği genellikle 7 yıla kadar saklanır.</li>
+          <li>Kimliğinizle artık ilişkilendirilemeyen <strong>toplulaştırılmış, anonim kullanım verileri</strong> ürün geliştirme amacıyla saklanabilir.</li>
+        </ul>
+        <div class="callout">Yukarıda belirtilenler dışında kimliğinizle bağlantılı hiçbir içerik, konum veya profil verisi saklanmaz.</div>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Contact -->
+    <div class="section" id="contact">
+      <div class="contact-card">
+        <p>
+          <span data-lang-inline="en">Questions about account deletion?</span>
+          <span data-lang-inline="tr">Hesap silme hakkında sorunuz mu var?</span>
+        </p>
+        <a class="contact-btn" href="mailto:pinsappcontact@gmail.com">pinsappcontact@gmail.com</a>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 PINs · Batuhan Gul ·
+      <a href="privacy.html">
+        <span data-lang-inline="en">Privacy Policy</span>
+        <span data-lang-inline="tr">Gizlilik Politikası</span>
+      </a>
+    </footer>
+
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+      localStorage.setItem('pins-lang', lang);
+    }
+    const saved = localStorage.getItem('pins-lang');
+    if (saved === 'tr') setLang('tr');
+  </script>
+</body>
+</html>
